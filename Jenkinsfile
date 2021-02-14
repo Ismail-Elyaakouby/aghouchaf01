@@ -1,10 +1,6 @@
 #!groovy
 
 node('slave-maven-01') {
-
-    	environment {
-        WARVERSION = '01'
-        }
     
     currentBuild.result = "SUCCESS"
 
@@ -27,7 +23,7 @@ node('slave-maven-01') {
 
        stage('Build Docker'){
 
-            sh 'docker build -f Dockerfile -t hellowordv01-"${env.WARVERSION}" .'
+            sh 'docker build -f Dockerfile -t hellowordv01" .'
        }
 
        stage('Deploy'){
