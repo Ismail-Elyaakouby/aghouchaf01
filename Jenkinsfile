@@ -2,6 +2,10 @@
 
 node('slave-maven-01') {
     
+environment {
+    registry = "https://hub.docker.com/88915020"
+    registryCredential = '88915020'
+}
     currentBuild.result = "SUCCESS"
 
     try {
@@ -26,6 +30,14 @@ node('slave-maven-01') {
             sh 'docker build -f Dockerfile -t hellowordv01 .'
        }
 
+       stage('Building image') {
+          steps{
+                script {
+                  docker.build registry + ":$BUILD_NUMBER"
+                }
+            }
+        }
+        
        stage('Deploy'){
 
          echo 'Push to Repo'
