@@ -2,6 +2,10 @@
 
 node('slave-maven-01') {
 
+    	environment {
+        WARVERSION = '01'
+        }
+    
     currentBuild.result = "SUCCESS"
 
     try {
@@ -23,7 +27,7 @@ node('slave-maven-01') {
 
        stage('Build Docker'){
 
-            sh 'docker build -f Dockerfile -t hellowordv01 .'
+            sh 'docker build -f Dockerfile -t hellowordv01-"${env.WARVERSION}" .'
        }
 
        stage('Deploy'){
