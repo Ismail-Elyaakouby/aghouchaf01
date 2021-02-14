@@ -23,7 +23,7 @@ node('slave-maven-01') {
 
        stage('Build Docker'){
 
-            sh 'docker build -f Dockerfile -t hellowordv01" .'
+            sh 'docker build -f Dockerfile -t hellowordv01 .'
        }
 
        stage('Deploy'){
