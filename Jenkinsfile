@@ -27,16 +27,8 @@ environment {
 
        stage('Build Docker'){
 
-            sh 'docker build -f Dockerfile -t hellowordv01 .'
+            sh 'docker build -f Dockerfile -t hellowordv01:$BUILD_NUMBER .'
        }
-
-       stage('Building image') {
-          steps{
-                script {
-                  docker.build registry + ":$BUILD_NUMBER"
-                }
-            }
-        }
         
        stage('Deploy'){
 
